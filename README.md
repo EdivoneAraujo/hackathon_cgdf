@@ -1,154 +1,162 @@
-## 🛡️ Guardian AI - Desafio Participa DF
+<p align="center">
+  <img src="imagem/logo.png" alt="Guardian AI" width="120">
+</p>
 
-1º Hackathon em Controle Social da CGDF
-Categoria 1: Acesso à Informação (Identificação automática de dados pessoais)
+<h1 align="center">Guardian AI — CGDF</h1>
 
----
-## 🎯 O Problema
 
-A Lei de Acesso à Informação (LAI) exige transparência, mas a Lei Geral de Proteção de Dados (LGPD) exige privacidade.
-O grande desafio não é apenas encontrar um CPF (que tem formato fixo), mas identificar relatos sensíveis (doenças, conflitos familiares, dados bancários) que cidadãos inserem inadvertidamente em pedidos de informação e que não podem ser publicados sem tratamento.
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-blue)
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/streamlit-app-red)
+![LGPD](https://img.shields.io/badge/LGPD-compliance-success)
+![Hackathon](https://img.shields.io/badge/Hackathon-Participa%20DF-yellow)
 
----
-## 💡 A Solução: Guardian AI
+**Guardian AI** é uma aplicação desenvolvida para o **Hackathon Participa DF – CGDF**, com foco em **controle social**, **transparência pública** e **conformidade com a LGPD**.
 
-O Guardian AI é uma ferramenta de auditoria inteligente que utiliza uma abordagem híbrida para classificar o risco de exposição de dados.
-
-**Diferenciais Técnicos:**
-
-1. Análise de Contexto Semântico: Diferente de ferramentas comuns, o Guardian AI detecta narrativas de alta intimidade (ex: "estou com depressão", "meu marido me agrediu", "tenho uma dívida") usando NLP e dicionários de risco contextual.
-
-2. Identificação de Entidades (NER): Utiliza o modelo pt_core_news_sm (Spacy) para reconhecer nomes de pessoas e endereços no meio de textos desestruturados.
-
-3. Dashboard de Gestão: Gera gráficos visuais (Plotly) que mostram não apenas quem violou, mas quais tipos de dados estão vazando mais, orientando ações preventivas.
-
-4. Sugestão de Anonimização: Entrega o texto já tratado (ex: [NOME_PESSOA], [CPF_OCULTADO]) para agilizar o trabalho do servidor público.
+A solução analisa textos administrativos (pedidos, processos, manifestações, protocolos etc.) e identifica **dados pessoais e sensíveis**, auxiliando a priorização de riscos e a tomada de decisão humana.
 
 ---
-## 📸 Demonstração
+## 🎯 Objetivo
 
-Painel de Controle (Dashboard)
+Apoiar órgãos públicos na:
+- Identificação automática de **dados pessoais (PII)**
+- Classificação de **nível de risco LGPD**
+- Priorização de análises sensíveis
+- Promoção da **transparência** e do **controle social**
 
-Visão geral dos riscos encontrados na base de dados (e-SIC), com métricas e gráficos interativos.
-
-Auditoria Detalhada
-
-Visualização linha a linha dos pedidos, com destaque para os dados encontrados e sugestão automática de tarja (anonimização).
-
----
-## 🛠️ Tecnologias Utilizadas
-
-Linguagem: Python 3.10+
-
-Interface: Streamlit (Web App interativo)
-
-Processamento de Linguagem Natural (NLP): Spacy (pt_core_news_sm)
-
-Visualização de Dados: Plotly Express
-
-Manipulação de Dados: Pandas
+> ⚠️ O sistema **não substitui análise humana** e **não armazena dados**.
 
 ---
-## 🚀 Instalação e Execução
+## 🧠 Funcionalidades
 
-Siga os passos abaixo para rodar o projeto localmente:
+✔ Detecção automática de dados sensíveis (CPF, e-mail, telefone, processos etc.)  
+✔ Score de risco LGPD (0–100)  
+✔ Classificação: **Baixo / Médio / Alto risco**  
+✔ Destaque visual (highlight) dos dados sensíveis  
+✔ Texto anonimizado automaticamente  
+✔ Dashboards executivos interativos  
+✔ Fila de priorização por risco  
+✔ Análise individual de textos  
+✔ Exportação de relatório em **PDF institucional**  
+✔ Interface responsiva (mobile-first)  
+✔ Identidade visual alinhada à **CGDF**
 
-1. Clone o repositório
+---
+## 🧩 Tecnologias Utilizadas
 
-git clone [https://github.com/EdivoneAraujo/hackathon_cgdf.git](https://github.com/EdivoneAraujo/hackathon_cgdf.git)
+- **Python 3.10+**
+- **Streamlit**
+- **spaCy (pt_core_news_sm)**
+- **Pandas**
+- **Plotly**
+- **ReportLab**
+- **Regex (detecção estruturada)**
+- **HTML + CSS customizado**
+
+---
+## 📁 Estrutura do Projeto
+
+hackathon_cgdf/
+
+├── app.py # Aplicação principal
+
+├── requirements.txt # Dependências
+
+├── README.md # Documentação
+
+├── LICENSE # Licença MIT
+
+├── .gitignore
+
+├── .venv
+
+├── imagem/
+
+│ ├── logo.png
+
+│ ├── logo_nome.png
+  
+│ └── Brasão_do_Distrito_Federal_(Brasil).png
+
+---
+## ⚙️ Instalação Local
+
+### 1️⃣ Clone o repositório
+```bash
+git clone https://github.com/EdivoneAraujo/hackathon_cgdf.git
 cd hackathon_cgdf
-
-2. Crie um ambiente virtual (Opcional, mas recomendado)
-
+````
+### 2️⃣ Crie um ambiente virtual (opcional)
 python -m venv venv
-# Windows
-.\venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-
-3. Instale as dependências
-
+### 3️⃣ Instale as dependências
 pip install -r requirements.txt
 
-
-4. Baixe o modelo de língua portuguesa
-
-Este passo é crucial para a IA entender o contexto em português.
-
+### 4️⃣ Instale o modelo NLP
 python -m spacy download pt_core_news_sm
 
-
-5. Execute a aplicação
-
+### 5️⃣ Execute o app
 streamlit run app.py
 
-O navegador abrirá automaticamente no endereço http://localhost:8501
+---
+## ☁️ Deploy (Streamlit Cloud)
+
+1. Suba o projeto no GitHub
+
+2. Acesse: https://streamlit.io/cloud
+
+3. Conecte o repositório
+
+4. Selecione app.py
+
+5. Deploy automático 🚀
 
 ---
-## 🧠 Lógica de Classificação de Risco
+## 🔐 LGPD & Ética
 
-O algoritmo atribui um Score de Risco (0-100) baseado na soma de fatores encontrados:
+- **❌ Nenhum dado é armazenado**
 
-. Tipo de Dado
+- **✔ Processamento local e temporário**
 
-. Método de Detecção
+- **✔ Apoio à decisão humana**
 
-. Peso no Score
+- **✔ Transparência algorítmica**
 
-. Exemplo
-
-. CPF / Telefone / Email
-
-. Regex (Padrão Fixo)
-
-. +25 pts (Alto)
-
-. 123.456.789-00
-
-. Relato Sensível
-
-. Dicionário Semântico
-
-. +30 pts (Crítico)
-
-. "tenho câncer", "agressão"
-
-. Nome de Pessoa
-
-. NLP (Spacy Entity)
-
-. +15 pts (Médio)
-
-. "João da Silva"
-
-. Endereço Completo
-
-. NLP (Spacy Entity)
-
-. +10 pts (Médio)
-
-. "Rua das Flores, 10"
-
-. Risco Alto: Score >= 50 (Bloqueio Automático Sugerido)
-
-. Risco Médio: Score >= 20 (Revisão Humana Necessária)
-
-. Risco Baixo: Score < 20 (Publicação Segura)
+- **✔ Finalidade pública e social**
 
 ---
-## 📄 Estrutura de Arquivos
+## 🏛️ Contexto Institucional
 
-📁 hackathon_cgdf
-├── 📄 app.py              # Código principal da aplicação
-├── 📄 requirements.txt    # Lista de dependências
-├── 📄 README.md           # Documentação
-└── 📄 AMOSTRA_e-SIC.csv   # Base de dados para teste
+Projeto desenvolvido no contexto do:
 
+Hackathon Participa DF
+Controladoria-Geral do Distrito Federal (CGDF)
 
-## 👥 Equipe
+---
+## 📄 Licença
 
-[Edivone Araújo] - Desenvolvedora
+Este projeto está sob a licença MIT.
+Veja o arquivo LICENSE
+ para mais detalhes.
 
-Projeto desenvolvido exclusivamente para o Desafio Participa DF (CGDF).
+---
+## 👩‍💻 Autoria
+
+<p align="center"> <a href="https://www.linkedin.com/in/edivone-araujo"> <img src="https://img.shields.io/badge/LinkedIn-Edivone%20Araújo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"> </a> <a href="https://github.com/EdivoneAraujo"> <img src="https://img.shields.io/badge/GitHub-Edivone%20Araújo-black?style=for-the-badge&logo=github"> </a>
+
+---
+## 🏆 Observação para Avaliadores
+
+Este projeto foi concebido com foco em:
+
+- Escalabilidade
+
+- Clareza institucional
+
+- Conformidade legal
+
+- Experiência do usuário
+
+- Transparência pública
 
