@@ -1,4 +1,9 @@
 streamlit
 pandas
 spacy
+pt-core-news-sm
+plotly
+kaleido
+reportlab
+streamlit-option-menu
 openpyxl
